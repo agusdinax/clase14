@@ -73,14 +73,12 @@ app.get("/paises", (req, res) => {
         (pais) =>
           normalizar(pais.idioma) === idiomaBuscado
       );
-
       return res.status(200).json({
         ok: true,
         cantidad: filtrados.length,
         data: filtrados
       });
     }
-
     res.status(200).json({
       ok: true,
       cantidad: paises.length,
@@ -200,12 +198,10 @@ app.delete("/paises/:nombre", (req, res) => {
         error: "País no encontrado"
       });
     }
-
     paises = paises.filter(
       (p) =>
         normalizar(p.pais) !== normalizar(nombre)
     );
-
     guardarPaises(paises);
     res.status(200).json({
       ok: true,
